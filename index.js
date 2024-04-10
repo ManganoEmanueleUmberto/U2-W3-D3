@@ -31,7 +31,6 @@ const fetchBook = () => {
 
       const btnsAdd = document.querySelectorAll(".addToCart");
       const cart = document.querySelector(".cart");
-      console.dir(cart);
       btnsAdd.forEach((btn) => {
         btn.addEventListener("click", () => {
           card = btn.closest(".card");
@@ -43,12 +42,13 @@ const fetchBook = () => {
             <button class=" btn btn-danger ms-3 deleteFromCart">Delete</button>
           <hr class="bg-body-tertiary">`;
           cart.appendChild(li);
-          const btnsCart = document.querySelectorAll(".deleteFromCart");
+        });
 
-          btnsCart.forEach((btn) => {
-            btn.addEventListener("click", () => {
-              btn.closest("li").remove();
-            });
+        const btnsCart = document.querySelectorAll(".deleteFromCart");
+
+        btnsCart.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            btn.closest("li").remove();
           });
         });
 
