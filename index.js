@@ -16,7 +16,6 @@ const fetchBook = () => {
         const card = document.createElement("div");
         card.classList.add("card");
         card.id = element.asin;
-        console.dir(card);
 
         card.innerHTML = `<img src=${element.img} class="card-img-top" alt="...">
         <div class="card-body">
@@ -36,21 +35,25 @@ const fetchBook = () => {
       btnsAdd.forEach((btn) => {
         btn.addEventListener("click", () => {
           card = btn.closest(".card");
-          console.dir(card);
           const li = document.createElement("li");
           li.innerHTML = `
-            <p class="dropdown-item fw-semibold">${card.children[1].children[0].innerHTML}</p>
-            <p class="dropdown-item">${card.children[1].children[2].innerHTML}</p>
-            <button class=" btn btn-danger ms-3 deleteFromCart">Delete</button>
+          <div class="d-flex p-1 ">
+            <img src="${card.children[0].currentSrc}"/>
+              <div class="d-flex flex-column">
+                <p class="dropdown-item fw-semibold px-1 py-0 mb-0">${card.children[1].children[0].innerHTML}</p>
+                <p class="dropdown-item px-1 mb-0">${card.children[1].children[2].innerHTML}</p>
+              </div>
+            </div>  
+            <div class="d-flex justify-content-end">
+            <button class=" btn btn-danger me-3  deleteFromCart ">Delete</button>
+            </div>
           <hr class="bg-body-tertiary">`;
           cart.appendChild(li);
-        });
-
-        const btnsCart = document.querySelectorAll(".deleteFromCart");
-
-        btnsCart.forEach((btn) => {
-          btn.addEventListener("click", () => {
-            btn.closest("li").remove();
+          const btnsCart = document.querySelectorAll(".deleteFromCart");
+          btnsCart.forEach((btn) => {
+            btn.addEventListener("click", () => {
+              btn.closest("li").remove();
+            });
           });
         });
 
