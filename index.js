@@ -15,6 +15,8 @@ const fetchBook = () => {
         col.classList.add("col");
         const card = document.createElement("div");
         card.classList.add("card");
+        card.id = element.asin;
+        console.dir(card);
 
         card.innerHTML = `<img src=${element.img} class="card-img-top" alt="...">
         <div class="card-body">
